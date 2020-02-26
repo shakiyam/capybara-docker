@@ -6,7 +6,8 @@ Capybara.app = proc do
 end
 Capybara.default_driver = :mechanize
 if ENV['HTTP_PROXY']
+  driver = Capybara.current_session.driver
   proxy = URI.parse(ENV['HTTP_PROXY'])
-  Capybara.current_session.driver.browser.agent.set_proxy(proxy.host, proxy.port)
+  driver.browser.agent.set_proxy(proxy.host, proxy.port)
 end
 Capybara.run_server = false
