@@ -3,6 +3,7 @@ WORKDIR /root
 COPY Gemfile /root/
 COPY Gemfile.lock /root/
 RUN apk update \
+  && apk add --no-cache xz-dev \
   && apk add --no-cache --virtual=.build-dependencies g++ gcc libxml2-dev libxslt-dev make \
   && bundle install \
   && rm -rf /root/.bundle/cache \
