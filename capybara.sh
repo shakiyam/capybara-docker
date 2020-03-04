@@ -1,11 +1,20 @@
 #!/bin/bash
 set -eu -o pipefail
 
-readonly IMAGE_NAME='shakiyam/capybara'
-
-docker container run \
-  -t \
-  --rm \
-  -u "$(id -u):$(id -g)" \
-  -v "$(cd "$(dirname "$0")" && pwd)":/work:ro \
-  "$IMAGE_NAME" "$@"
+if [[ $(command -v podman) ]]; then
+  podman container run \
+    --name capybara$$ \
+    --rm \
+    --security-opt label=disable \
+    -t \
+    -v "$PWD":/work \
+    shakiyam/capybara "$@"
+else
+  docker container run \
+    --name capybara$$ \
+    --rm \
+    -t \
+    -u "$(id -u):$(id -g)" \
+    -v "$PWD":/work:ro \
+    shakiyam/capybara "$@"
+fi

@@ -3,12 +3,11 @@ set -eu -o pipefail
 
 readonly IMAGE_NAME='shakiyam/capybara'
 
-current_image="$(docker image ls -q $IMAGE_NAME:latest)"
-docker image build \
-  --build-arg http_proxy="${http_proxy:-}" \
-  --build-arg https_proxy="${https_proxy:-}" \
+readonly DOCKER=$(command -v podman || command -v docker)
+current_image="$($DOCKER image ls -q $IMAGE_NAME:latest)"
+$DOCKER image build \
   -t "$IMAGE_NAME" "$(dirname "$0")"
-latest_image="$(docker image ls -q $IMAGE_NAME:latest)"
+latest_image="$($DOCKER image ls -q $IMAGE_NAME:latest)"
 if [[ "$current_image" != "$latest_image" ]]; then
-  docker image tag $IMAGE_NAME:latest $IMAGE_NAME:"$(date +%Y%m%d%H%S)"
+  $DOCKER image tag $IMAGE_NAME:latest $IMAGE_NAME:"$(date +%Y%m%d%H%S)"
 fi
