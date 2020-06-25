@@ -3,8 +3,9 @@ WORKDIR /root
 COPY Gemfile /root/
 COPY Gemfile.lock /root/
 RUN apk update \
-  && apk add --no-cache xz-dev \
-  && apk add --no-cache --virtual=.build-dependencies g++ gcc libxml2-dev libxslt-dev make \
+  && apk add --no-cache xz-dev libxml2-dev libxslt-dev \
+  && apk add --no-cache --virtual=.build-dependencies g++ gcc make \
+  && bundle config build.nokogiri --use-system-libraries \
   && bundle install \
   && rm -rf /root/.bundle/cache \
   && rm -rf /usr/local/bundle/cache/*.gem \
