@@ -3,7 +3,7 @@ set -eu -o pipefail
 
 readonly IMAGE_NAME='shakiyam/capybara'
 
-readonly DOCKER=$(command -v podman || command -v docker)
+DOCKER=$(command -v podman || command -v docker); readonly DOCKER
 current_image="$($DOCKER image ls -q $IMAGE_NAME:latest)"
 $DOCKER image build \
   -t "$IMAGE_NAME" "$(dirname "$0")"
