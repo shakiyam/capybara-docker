@@ -6,6 +6,5 @@ feature 'Remote test' do
   scenario 'Access this project page' do
     visit '/shakiyam/capybara-docker/'
     expect(page).to have_content 'capybara-docker'
-    click_link 'Go to file'
   end
 end
