@@ -1,13 +1,11 @@
 #!/bin/bash
 set -eu -o pipefail
 
-readonly IMAGE_NAME='shakiyam/capybara'
-
+IMAGE_NAME='shakiyam/capybara'; readonly IMAGE_NAME
 DOCKER=$(command -v podman || command -v docker); readonly DOCKER
-current_image="$($DOCKER image ls -q $IMAGE_NAME:latest)"
-$DOCKER image build \
-  -t "$IMAGE_NAME" "$(dirname "$0")"
-latest_image="$($DOCKER image ls -q $IMAGE_NAME:latest)"
-if [[ "$current_image" != "$latest_image" ]]; then
+CURRENT_IMAGE="$($DOCKER image ls -q $IMAGE_NAME:latest)"; readonly CURRENT_IMAGE
+$DOCKER image build -t "$IMAGE_NAME" "$(dirname "$0")"
+LATEST_IMAGE="$($DOCKER image ls -q $IMAGE_NAME:latest)"; readonly LATEST_IMAGE
+if [[ "$CURRENT_IMAGE" != "$LATEST_IMAGE" ]]; then
   $DOCKER image tag $IMAGE_NAME:latest $IMAGE_NAME:"$(date +%Y%m%d%H%S)"
 fi
