@@ -29,7 +29,7 @@ rubocop: ## Check for Ruby scripts
 
 shellcheck: ## Lint shell scripts
 	@echo -e "\033[36m$@\033[0m"
-	@shellcheck *.sh
+	@shellcheck capybara.sh *.sh
 
 update_lockfile: ## Update Gemfile.lock
 	@echo -e "\033[36m$@\033[0m"
