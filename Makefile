@@ -8,7 +8,7 @@ ALL_TARGETS := $(shell egrep -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://')
 
 .PHONY: $(ALL_TARGETS)
 
-all: shellcheck hadolint rubocop update_lockfile build rspec ## Lint, update Gemfile.lock, build, and test
+all: hadolint shellcheck shfmt rubocop update_lockfile build rspec ## Lint, update Gemfile.lock, build, and test
 	@:
 
 build: ## Build an image from a Dockerfile
@@ -29,7 +29,11 @@ rubocop: ## Check for Ruby scripts
 
 shellcheck: ## Lint shell scripts
 	@echo -e "\033[36m$@\033[0m"
-	@./shellcheck.sh capybara.sh *.sh
+	@./shellcheck.sh *.sh
+
+shfmt: ## Lint shell scripts
+	@echo -e "\033[36m$@\033[0m"
+	@./shfmt.sh -l -d -i 2 -ci -bn *.sh
 
 update_lockfile: ## Update Gemfile.lock
 	@echo -e "\033[36m$@\033[0m"
