@@ -11,7 +11,7 @@ if [[ $(command -v podman) ]]; then
     -v "$script_dir/Gemfile":/work/Gemfile \
     -v "$script_dir/Gemfile.lock":/work/Gemfile.lock \
     -w /work \
-    ruby:alpine sh -c 'HOME=/tmp bundle lock --update'
+    ruby:2-alpine sh -c 'HOME=/tmp bundle lock --update'
 else
   docker container run \
     --name update_lockfile$$ \
@@ -20,5 +20,5 @@ else
     -v "$script_dir/Gemfile":/work/Gemfile:ro \
     -v "$script_dir/Gemfile.lock":/work/Gemfile.lock \
     -w /work \
-    ruby:alpine sh -c 'HOME=/tmp bundle lock --update'
+    ruby:2-alpine sh -c 'HOME=/tmp bundle lock --update'
 fi
