@@ -2,6 +2,7 @@ FROM ruby:2-alpine
 WORKDIR /root
 COPY Gemfile /root/
 COPY Gemfile.lock /root/
+# hadolint ignore=DL3018
 RUN apk update \
   && apk add --no-cache xz-dev libxml2-dev libxslt-dev \
   && apk add --no-cache --virtual=.build-dependencies g++ gcc make \

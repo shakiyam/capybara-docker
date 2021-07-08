@@ -17,7 +17,7 @@ build: ## Build an image from a Dockerfile
 
 hadolint: ## Lint Dockerfile
 	@echo -e "\033[36m$@\033[0m"
-	@./hadolint.sh --ignore DL3018 Dockerfile
+	@./hadolint.sh Dockerfile
 
 rspec: build ## Test the applicattion
 	@echo -e "\033[36m$@\033[0m"
