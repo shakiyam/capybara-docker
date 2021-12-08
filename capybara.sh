@@ -5,9 +5,9 @@ if [[ $(command -v podman) ]]; then
   podman container run \
     --name capybara$$ \
     --rm \
-    --security-opt label=disable \
     -t \
-    -v "$PWD":/work \
+    --security-opt label=disable \
+    -v "$PWD":/work:ro \
     shakiyam/capybara "$@"
 else
   docker container run \
