@@ -13,11 +13,11 @@ all: hadolint shellcheck shfmt rubocop update_lockfile build rspec ## Lint, upda
 
 build: ## Build an image from a Dockerfile
 	@echo -e "\033[36m$@\033[0m"
-	@./build.sh
+	@./tools/build.sh
 
 hadolint: ## Lint Dockerfile
 	@echo -e "\033[36m$@\033[0m"
-	@./hadolint.sh Dockerfile
+	@./tools/hadolint.sh Dockerfile
 
 rspec: build ## Test the applicattion
 	@echo -e "\033[36m$@\033[0m"
@@ -25,19 +25,19 @@ rspec: build ## Test the applicattion
 
 rubocop: ## Check for Ruby scripts
 	@echo -e "\033[36m$@\033[0m"
-	@./rubocop.sh
+	@./tools/rubocop.sh
 
 shellcheck: ## Lint shell scripts
 	@echo -e "\033[36m$@\033[0m"
-	@./shellcheck.sh *.sh
+	@./tools/shellcheck.sh *.sh tools/*.sh
 
 shfmt: ## Lint shell scripts
 	@echo -e "\033[36m$@\033[0m"
-	@./shfmt.sh -l -d -i 2 -ci -bn *.sh
+	@./tools/shfmt.sh -l -d -i 2 -ci -bn *.sh tools/*.sh
 
 update_lockfile: ## Update Gemfile.lock
 	@echo -e "\033[36m$@\033[0m"
-	@./update_lockfile.sh
+	@./tools/update_lockfile.sh
 
 help: ## Print this help
 	@echo 'Usage: make [target]'
