@@ -8,7 +8,7 @@ if [[ $(command -v podman) ]]; then
     -t \
     --security-opt label=disable \
     -v "$PWD":/work:ro \
-    shakiyam/rubocop "$@"
+    docker.io/shakiyam/rubocop "$@"
 else
   docker container run \
     --name rubocop$$ \
