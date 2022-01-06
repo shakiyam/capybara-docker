@@ -4,6 +4,7 @@ set -eu -o pipefail
 if [[ $(command -v podman) ]]; then
   podman container run \
     --name capybara$$ \
+    --net "${NETWORK:-bridge}" \
     --rm \
     -t \
     --security-opt label=disable \
@@ -12,6 +13,7 @@ if [[ $(command -v podman) ]]; then
 else
   docker container run \
     --name capybara$$ \
+    --net "${NETWORK:-bridge}" \
     --rm \
     -t \
     -u "$(id -u):$(id -g)" \
