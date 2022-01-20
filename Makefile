@@ -19,6 +19,12 @@ hadolint: ## Lint Dockerfile
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/hadolint.sh Dockerfile
 
+help: ## Print this help
+	@echo 'Usage: make [target]'
+	@echo ''
+	@echo 'Targets:'
+	@awk 'BEGIN {FS = ":.*?## "} /^[0-9A-Za-z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
 rspec: build ## Test capybara
 	@echo -e "\033[36m$@\033[0m"
 	@./capybara.sh
@@ -38,9 +44,3 @@ shfmt: ## Lint shell scripts
 update_lockfile: ## Update Gemfile.lock
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/update_lockfile.sh
-
-help: ## Print this help
-	@echo 'Usage: make [target]'
-	@echo ''
-	@echo 'Targets:'
-	@awk 'BEGIN {FS = ":.*?## "} /^[0-9A-Za-z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
