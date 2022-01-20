@@ -19,11 +19,11 @@ hadolint: ## Lint Dockerfile
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/hadolint.sh Dockerfile
 
-rspec: build ## Test the applicattion
+rspec: build ## Test capybara
 	@echo -e "\033[36m$@\033[0m"
 	@./capybara.sh
 
-rubocop: ## Check for Ruby scripts
+rubocop: ## Lint Ruby scripts
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/rubocop.sh
 
