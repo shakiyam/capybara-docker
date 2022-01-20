@@ -13,5 +13,6 @@ RUN apk add --no-cache xz-dev libxml2-dev libxslt-dev \
   && apk del --purge .build-dependencies
 WORKDIR /work
 VOLUME /work
+USER nobody:nobody
 ENTRYPOINT ["rspec"]
 CMD ["-O", "/dev/null", "-fd"]
