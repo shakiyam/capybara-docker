@@ -3,7 +3,7 @@ WORKDIR /root
 COPY Gemfile /root/
 COPY Gemfile.lock /root/
 # hadolint ignore=DL3018
-RUN apk add --no-cache xz-dev libxml2-dev libxslt-dev \
+RUN apk add --no-cache gcompat libxml2-dev libxslt-dev xz-dev \
   && apk add --no-cache --virtual=.build-dependencies g++ gcc make \
   && bundle config build.nokogiri --use-system-libraries \
   && bundle install \
