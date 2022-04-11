@@ -12,8 +12,8 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    capybara-mechanize (1.11.0)
-      capybara (>= 2.4.4, < 4)
+    capybara-mechanize (1.12.0)
+      capybara (>= 3.0.0, < 4)
       mechanize (~> 2.7.0)
     connection_pool (2.2.5)
     diff-lcs (1.5.0)
@@ -36,12 +36,10 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.1)
       connection_pool (~> 2.2)
-    nokogiri (1.13.3)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     ntlm-http (0.1.1)
     public_suffix (4.0.6)
@@ -49,7 +47,7 @@ GEM
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    regexp_parser (2.2.1)
+    regexp_parser (2.3.0)
     rspec (3.11.0)
       rspec-core (~> 3.11.0)
       rspec-expectations (~> 3.11.0)
@@ -72,12 +70,12 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
-  ruby
+  x86_64-linux-musl
 
 DEPENDENCIES
   capybara
-  capybara-mechanize
+  capybara-mechanize (>= 1.12.0)
   rspec
 
 BUNDLED WITH
-   2.1.4
+   2.3.7
