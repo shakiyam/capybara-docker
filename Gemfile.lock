@@ -39,7 +39,7 @@ GEM
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.1)
       connection_pool (~> 2.2)
-    nokogiri (1.13.5-x86_64-linux)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     ntlm-http (0.1.1)
     public_suffix (4.0.7)
@@ -47,7 +47,7 @@ GEM
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    regexp_parser (2.3.1)
+    regexp_parser (2.4.0)
     rspec (3.11.0)
       rspec-core (~> 3.11.0)
       rspec-expectations (~> 3.11.0)
@@ -73,7 +73,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  capybara
+  capybara (= 3.36.0)
   capybara-mechanize (>= 1.12.0)
   rspec
 
