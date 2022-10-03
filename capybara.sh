@@ -10,7 +10,7 @@ if [[ $(command -v docker) ]]; then
     -u "$(id -u):$(id -g)" \
     -v "$PWD":/work:ro \
     docker.io/shakiyam/capybara "$@"
-else
+elif [[ $(command -v podman) ]]; then
   podman container run \
     --name capybara$$ \
     --net "${NETWORK:-bridge}" \
@@ -19,4 +19,7 @@ else
     -t \
     -v "$PWD":/work:ro \
     docker.io/shakiyam/capybara "$@"
+else
+  echo "Neither docker nor podman is installed."
+  exit 1
 fi
