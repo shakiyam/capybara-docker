@@ -23,6 +23,6 @@ elif [[ $(command -v podman) ]]; then
     -v "$PWD":/work:ro \
     docker.io/shakiyam/rubocop "$@"
 else
-  echo_error "Neither docker nor podman is installed."
+  echo_error 'Neither docker nor podman is installed.'
   exit 1
 fi
