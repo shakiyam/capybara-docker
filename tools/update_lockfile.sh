@@ -26,6 +26,6 @@ elif [[ $(command -v podman) ]]; then
     -w /work \
     docker.io/ruby:3.1-alpine3.16 sh -c 'HOME=/tmp bundle lock --update'
 else
-  echo_error "Neither docker nor podman is installed."
+  echo_error 'Neither docker nor podman is installed.'
   exit 1
 fi
