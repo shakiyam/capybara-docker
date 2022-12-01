@@ -8,11 +8,21 @@ ALL_TARGETS := $(shell egrep -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://')
 
 .PHONY: $(ALL_TARGETS)
 
-all: lint update_lockfile build rspec ## Lint, update Gemfile.lock, build, and test
+all: check_for_updates lint build rspec ## Check for updates, lint, build, and test
 
 build: ## Build an image from a Dockerfile
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/build.sh docker.io/shakiyam/capybara
+
+check_for_image_updates: ## Check for image updates
+	@echo -e "\033[36m$@\033[0m"
+	@./tools/check_for_image_updates.sh "$(shell awk -e '/FROM/{print $$2}' Dockerfile)" docker.io/ruby:alpine
+
+check_for_library_updates: ## Check for library updates
+	@echo -e "\033[36m$@\033[0m"
+	@./tools/update_lockfile.sh
+
+check_for_updates: check_for_image_updates check_for_library_updates ## Check for updates to all dependencies
 
 hadolint: ## Lint Dockerfile
 	@echo -e "\033[36m$@\033[0m"
@@ -41,7 +51,3 @@ shellcheck: ## Lint shell scripts
 shfmt: ## Lint shell scripts
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/shfmt.sh -l -d -i 2 -ci -bn *.sh tools/*.sh
-
-update_lockfile: ## Update Gemfile.lock
-	@echo -e "\033[36m$@\033[0m"
-	@./tools/update_lockfile.sh
