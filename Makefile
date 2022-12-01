@@ -26,7 +26,7 @@ help: ## Print this help
 
 lint: hadolint rubocop shellcheck shfmt ## Lint all dependencies
 
-rspec: build ## Test capybara
+rspec: ## Test capybara
 	@echo -e "\033[36m$@\033[0m"
 	@./capybara.sh
 
