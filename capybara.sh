@@ -9,7 +9,7 @@ if [[ $(command -v docker) ]]; then
     -t \
     -u "$(id -u):$(id -g)" \
     -v "$PWD":/work:ro \
-    docker.io/shakiyam/capybara "$@"
+    ghcr.io/shakiyam/capybara "$@"
 elif [[ $(command -v podman) ]]; then
   podman container run \
     --name capybara$$ \
@@ -18,7 +18,7 @@ elif [[ $(command -v podman) ]]; then
     --security-opt label=disable \
     -t \
     -v "$PWD":/work:ro \
-    docker.io/shakiyam/capybara "$@"
+    ghcr.io/shakiyam/capybara "$@"
 else
   echo "Neither docker nor podman is installed."
   exit 1
