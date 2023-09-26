@@ -40,6 +40,8 @@ GEM
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
+    nokogiri (1.15.4-arm-linux)
+      racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     public_suffix (5.0.3)
@@ -71,8 +73,8 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  arm64-linux
   x86_64-linux
-  x86_64-linux-musl
 
 DEPENDENCIES
   capybara-mechanize (= 1.12.1)
