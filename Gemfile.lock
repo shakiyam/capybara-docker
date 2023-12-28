@@ -39,9 +39,11 @@ GEM
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    nokogiri (1.15.5-arm-linux)
+    nokogiri (1.16.0-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-linux)
+    nokogiri (1.16.0-arm-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     public_suffix (5.0.4)
     racc (1.7.3)
@@ -69,6 +71,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  aarch64-linux
   arm64-linux
   x86_64-linux
 
