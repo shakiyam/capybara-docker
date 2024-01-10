@@ -17,7 +17,7 @@ GEM
       mechanize (~> 2.8.5)
     connection_pool (2.4.1)
     diff-lcs (1.5.0)
-    domain_name (0.6.20231109)
+    domain_name (0.6.20240107)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     matrix (0.4.2)
