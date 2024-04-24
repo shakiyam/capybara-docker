@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/ruby:3.3.0-slim-bookworm AS builder
+FROM public.ecr.aws/docker/library/ruby:3.3.1-slim-bookworm AS builder
 WORKDIR /root
 COPY Gemfile /root/
 COPY Gemfile.lock /root/
