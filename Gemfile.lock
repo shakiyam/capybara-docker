@@ -21,7 +21,7 @@ GEM
     domain_name (0.6.20240107)
     http-cookie (1.0.8)
       domain_name (~> 0.5)
-    logger (1.6.3)
+    logger (1.6.4)
     matrix (0.4.2)
     mechanize (2.8.5)
       addressable (~> 2.8)
