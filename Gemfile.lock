@@ -16,7 +16,7 @@ GEM
     capybara-mechanize (1.12.1)
       capybara (>= 3.0.0, < 3.37.0)
       mechanize (~> 2.8.5)
-    connection_pool (2.4.1)
+    connection_pool (2.5.0)
     diff-lcs (1.5.1)
     domain_name (0.6.20240107)
     http-cookie (1.0.8)
@@ -37,7 +37,7 @@ GEM
     mime-types (3.6.0)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.1203)
+    mime-types-data (3.2025.0107)
     mini_mime (1.1.5)
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.5)
