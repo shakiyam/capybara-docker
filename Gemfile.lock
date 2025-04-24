@@ -16,7 +16,7 @@ GEM
     capybara-mechanize (1.12.1)
       capybara (>= 3.0.0, < 3.37.0)
       mechanize (~> 2.8.5)
-    connection_pool (2.5.1)
+    connection_pool (2.5.2)
     diff-lcs (1.6.1)
     domain_name (0.6.20240107)
     http-cookie (1.0.8)
