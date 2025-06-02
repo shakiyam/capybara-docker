@@ -3,7 +3,7 @@ GEM
   specs:
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    base64 (0.2.0)
+    base64 (0.3.0)
     capybara (3.36.0)
       addressable
       matrix
