@@ -12,7 +12,7 @@ build: ## Build an image from a Dockerfile
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/build.sh ghcr.io/shakiyam/capybara
 
-check_for_action_updates: ## Check for action updates
+check_for_action_updates: ## Check for GitHub Actions updates
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/check_for_action_updates.sh actions/checkout
 	@./tools/check_for_action_updates.sh docker/build-push-action
@@ -22,7 +22,7 @@ check_for_action_updates: ## Check for action updates
 
 check_for_image_updates: ## Check for image updates
 	@echo -e "\033[36m$@\033[0m"
-	@./tools/check_for_image_updates.sh "$(shell awk -e 'NR==1{print $$2}' Dockerfile)" docker.io/library/ruby:slim
+	@./tools/check_for_image_updates.sh "$(shell awk '/^FROM /{print $$2; exit}' Dockerfile)" docker.io/library/ruby:slim
 
 check_for_library_updates: ## Check for library updates
 	@echo -e "\033[36m$@\033[0m"
