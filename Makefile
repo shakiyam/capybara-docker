@@ -8,7 +8,7 @@ ALL_TARGETS := $(shell grep -E -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://
 
 all: check_for_updates lint build rspec ## Check for updates, lint, build, and test
 
-build: ## Build an image from a Dockerfile
+build: ## Build Docker image
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/build.sh ghcr.io/shakiyam/capybara
 
@@ -42,7 +42,7 @@ help: ## Print this help
 
 lint: hadolint rubocop shellcheck shfmt ## Lint all dependencies
 
-rspec: ## Test capybara
+rspec: build ## Test capybara
 	@echo -e "\033[36m$@\033[0m"
 	@./capybara.sh
 
