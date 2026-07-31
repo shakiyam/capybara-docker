@@ -17,5 +17,7 @@ WORKDIR /work
 VOLUME /work
 # nobody:nogroup
 USER 65534:65534
+ARG SOURCE_COMMIT
+ENV SOURCE_COMMIT=$SOURCE_COMMIT
 ENTRYPOINT ["rspec"]
 CMD ["-O", "/dev/null", "-fd"]
