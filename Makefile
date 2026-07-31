@@ -8,6 +8,10 @@ ALL_TARGETS := $(shell grep -E -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://
 
 all: check_for_updates format lint build rspec ## Check for updates, format, lint, build, and test
 
+actionlint: ## Lint GitHub Actions workflow files
+	@echo -e "\033[36m$@\033[0m"
+	@./tools/actionlint.sh
+
 build: ## Build Docker image
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/build.sh ghcr.io/shakiyam/capybara
@@ -42,7 +46,7 @@ help: ## Print this help
 	@echo 'Targets:'
 	@awk 'BEGIN {FS = ":.*?## "} /^[0-9A-Za-z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-lint: hadolint rubocop shellcheck ## Run all linting
+lint: actionlint hadolint rubocop shellcheck zizmor ## Run all linting
 
 rspec: build ## Test capybara
 	@echo -e "\033[36m$@\033[0m"
@@ -59,3 +63,7 @@ shellcheck: ## Lint shell scripts
 shfmt: ## Format shell scripts
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/shfmt.sh -l -w -i 2 -ci -bn ./*.sh tools/*.sh
+
+zizmor: ## Lint GitHub Actions workflows for security issues
+	@echo -e "\033[36m$@\033[0m"
+	@./tools/zizmor.sh .
