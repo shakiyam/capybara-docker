@@ -50,7 +50,11 @@ help: ## Print this help
 	@echo 'Targets:'
 	@awk 'BEGIN {FS = ":.*?## "} /^[0-9A-Za-z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-lint: actionlint hadolint rubocop shellcheck zizmor ## Run all linting
+lint: actionlint hadolint markdownlint rubocop shellcheck zizmor ## Run all linting
+
+markdownlint: ## Lint Markdown files
+	@echo -e "\033[36m$@\033[0m"
+	@./tools/markdownlint-cli2.sh "*.md"
 
 rspec: build ## Test capybara
 	@echo -e "\033[36m$@\033[0m"
