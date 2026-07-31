@@ -6,7 +6,7 @@ ALL_TARGETS := $(shell grep -E -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://
 .PHONY: $(ALL_TARGETS)
 .DEFAULT_GOAL := help
 
-all: check_for_updates lint build rspec ## Check for updates, lint, build, and test
+all: check_for_updates format lint build rspec ## Check for updates, format, lint, build, and test
 
 build: ## Build Docker image
 	@echo -e "\033[36m$@\033[0m"
@@ -30,6 +30,8 @@ check_for_library_updates: ## Check for library updates
 
 check_for_updates: check_for_action_updates check_for_image_updates check_for_library_updates ## Check for updates to all dependencies
 
+format: shfmt ## Run all formatting
+
 hadolint: ## Lint Dockerfile
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/hadolint.sh Dockerfile
@@ -40,7 +42,7 @@ help: ## Print this help
 	@echo 'Targets:'
 	@awk 'BEGIN {FS = ":.*?## "} /^[0-9A-Za-z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-lint: hadolint rubocop shellcheck shfmt ## Lint all dependencies
+lint: hadolint rubocop shellcheck ## Run all linting
 
 rspec: build ## Test capybara
 	@echo -e "\033[36m$@\033[0m"
@@ -54,6 +56,6 @@ shellcheck: ## Lint shell scripts
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/shellcheck.sh ./*.sh tools/*.sh
 
-shfmt: ## Lint shell scripts
+shfmt: ## Format shell scripts
 	@echo -e "\033[36m$@\033[0m"
-	@./tools/shfmt.sh -l -d -i 2 -ci -bn ./*.sh tools/*.sh
+	@./tools/shfmt.sh -l -w -i 2 -ci -bn ./*.sh tools/*.sh
