@@ -34,6 +34,9 @@ check_for_library_updates: ## Check for library updates
 
 check_for_updates: check_for_action_updates check_for_image_updates check_for_library_updates ## Check for updates to all dependencies
 
+check_local_image:
+	@./tools/check_local_image.sh ghcr.io/shakiyam/capybara
+
 dockerfmt: ## Format Dockerfile
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/dockerfmt.sh -i 2 -n -w Dockerfile
@@ -56,7 +59,7 @@ markdownlint: ## Lint Markdown files
 	@echo -e "\033[36m$@\033[0m"
 	@./tools/markdownlint-cli2.sh "*.md"
 
-rspec: build ## Test capybara
+rspec: check_local_image ## Test capybara
 	@echo -e "\033[36m$@\033[0m"
 	@./capybara.sh
 
