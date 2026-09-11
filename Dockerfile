@@ -10,6 +10,8 @@ RUN apt-get update \
   && rm -rf /root/.bundle/cache \
   && rm -rf /usr/local/bundle/cache/*.gem \
   && find /usr/local/bundle/gems/ -regex ".*\.[cho]" -delete
+# TODO: Remove once rubyntlm ships world-readable files (0.6.6 is packaged with mode 0640)
+RUN chmod -R a+rX /usr/local/bundle
 
 FROM docker.io/library/ruby:4.0.6-slim-trixie
 COPY --from=builder /usr/local/bundle /usr/local/bundle
