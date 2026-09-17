@@ -65,7 +65,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.7)
-    rubyntlm (0.6.6)
+    rubyntlm (0.6.8)
       base64
     webrick (1.9.2)
     webrobots (0.1.2)
