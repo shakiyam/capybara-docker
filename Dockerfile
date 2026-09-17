@@ -1,4 +1,4 @@
-FROM docker.io/library/ruby:4.0.6-slim-trixie AS builder
+FROM docker.io/library/ruby:4.0.7-slim-trixie AS builder
 WORKDIR /root
 COPY Gemfile /root/
 COPY Gemfile.lock /root/
@@ -13,7 +13,7 @@ RUN apt-get update \
 # TODO: Remove once rubyntlm ships world-readable files (0.6.6 is packaged with mode 0640)
 RUN chmod -R a+rX /usr/local/bundle
 
-FROM docker.io/library/ruby:4.0.6-slim-trixie
+FROM docker.io/library/ruby:4.0.7-slim-trixie
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 WORKDIR /work
 VOLUME /work
