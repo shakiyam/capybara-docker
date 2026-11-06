@@ -9,7 +9,8 @@ RUN apt-get update \
   && bundle install \
   && rm -rf /root/.bundle/cache \
   && rm -rf /usr/local/bundle/cache/*.gem \
-  && find /usr/local/bundle/gems/ -regex ".*\.[cho]" -delete
+  && find /usr/local/bundle/gems/ -regex ".*\.[cho]" -delete \
+  && rm -rf /usr/local/bundle/gems/*/spec /usr/local/bundle/gems/*/test
 
 FROM docker.io/library/ruby:4.0.9-slim-trixie
 # TODO: Remove json cleanup once base image includes json >= 2.19.9 (CVE-2026-33210, CVE-2026-54696)
