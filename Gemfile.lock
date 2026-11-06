@@ -21,6 +21,7 @@ GEM
     domain_name (0.7.20261031)
     http-cookie (1.1.6)
       domain_name (~> 0.5)
+    json (3.1.0)
     logger (1.7.0)
     matrix (0.4.3)
     mechanize (2.8.5)
@@ -78,6 +79,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara-mechanize (= 1.12.1)
+  json (>= 2.19.9)
   rspec
 
 BUNDLED WITH
