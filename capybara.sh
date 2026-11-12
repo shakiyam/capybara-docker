@@ -11,12 +11,16 @@ if command -v docker &>/dev/null; then
     -v "$PWD":/work:ro \
     ghcr.io/shakiyam/capybara "$@"
 elif command -v podman &>/dev/null; then
+  # The image runs as USER 65534, which rootless Podman maps to a subuid that cannot
+  # read the caller's private files; keep-id plus -u runs as the caller instead.
   podman container run \
     --name "capybara_$(uuidgen | head -c8)" \
     --net "${NETWORK:-bridge}" \
     --rm \
     --security-opt label=disable \
     -t \
+    --userns=keep-id \
+    -u "$(id -u):$(id -g)" \
     -v "$PWD":/work:ro \
     ghcr.io/shakiyam/capybara "$@"
 else
