@@ -1,4 +1,4 @@
-FROM docker.io/library/ruby:4.0.9-slim-trixie AS builder
+FROM docker.io/library/ruby:4.0.10-slim-trixie AS builder
 WORKDIR /root
 COPY Gemfile /root/
 COPY Gemfile.lock /root/
@@ -12,7 +12,7 @@ RUN apt-get update \
   && find /usr/local/bundle/gems/ -regex ".*\.[cho]" -delete \
   && rm -rf /usr/local/bundle/gems/*/spec /usr/local/bundle/gems/*/test
 
-FROM docker.io/library/ruby:4.0.9-slim-trixie
+FROM docker.io/library/ruby:4.0.10-slim-trixie
 # TODO: Remove package upgrades once base image includes zlib1g >= 1:1.3.dfsg+really1.3.1-1+deb13u1 (CVE-2026-76844, CVE-2026-85091)
 # hadolint ignore=DL3008
 RUN apt-get update \
