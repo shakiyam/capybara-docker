@@ -18,7 +18,7 @@ GEM
       mechanize (~> 2.8.5)
     connection_pool (3.0.3)
     diff-lcs (1.6.2)
-    domain_name (0.7.20261031)
+    domain_name (0.7.20261117)
     http-cookie (1.1.6)
       domain_name (~> 0.5)
     json (3.1.0)
